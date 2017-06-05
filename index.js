@@ -1,10 +1,9 @@
 var aparse = require('acorn').parse;
 function parse (src, opts) {
     if (!opts) opts = {}
-    return aparse(src, {
-        ecmaVersion: opts.ecmaVersion || 8,
-        allowHashBang: true
-    });
+    if (opts.ecmaVersion == null) opts.ecmaVersion = 8
+    if (opts.allowHashBang == null) opts.allowHashBang = true
+    return aparse(src, opts);
 }
 
 module.exports = function (src, file,opts) {

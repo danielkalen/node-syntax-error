@@ -1,6 +1,6 @@
-# syntax-error
+# syntax-error-plus
 
-Detect and report syntax errors in source code strings.
+Detect and report syntax errors in source code strings. This is a fork of [node-syntax-error](https://github.com/substack/node-syntax-error) with the difference being that the exported module accepts an options object as the 2nd argument which will be passed to [acorn parser](https://github.com/ternjs/acorn)
 
 [![build status](https://secure.travis-ci.org/substack/node-syntax-error.png)](http://travis-ci.org/substack/node-syntax-error)
 
@@ -13,7 +13,7 @@ them in a similarly friendly format that wrapping a try/catch around
 
 ``` js
 var fs = require('fs');
-var check = require('syntax-error');
+var check = require('syntax-error-plus');
 
 var file = __dirname + '/src.js';
 var src = fs.readFileSync(file);
@@ -32,7 +32,7 @@ if (err) {
 $ node check.js
 ERROR DETECTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-/home/substack/projects/node-syntax-error/example/src.js:5
+/home/substack/projects/node-syntax-error-plus/example/src.js:5
         if (Array.isArray(x) res.push.apply(res, x);
                              ^
 ParseError: Unexpected identifier
@@ -42,7 +42,7 @@ ParseError: Unexpected identifier
 # methods
 
 ``` js
-var check = require('syntax-error')
+var check = require('syntax-error-plus')
 ```
 
 ## var err = check(src, file, opts={})
@@ -58,6 +58,7 @@ If there are no syntax errors in `src`, return `undefined`.
 Optionally set:
 
 * `opts.ecmaVersion` - default: 8
+* any option that [acorn](https://github.com/ternjs/acorn) accepts
 
 ## err.toString()
 
@@ -83,7 +84,7 @@ column number of the error in the original source (indexing starts at 1)
 With [npm](http://npmjs.org) do:
 
 ```
-npm install syntax-error
+npm install syntax-error-plus
 ```
 
 # license
